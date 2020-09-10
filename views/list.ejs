@@ -1,0 +1,67 @@
+<!-- Instructed by Angela Mam (And It's the best) -->
+
+<%- include("header"); %>
+
+<div class="box" id="heading">
+  <h1><%= title %></h1>
+</div>
+<div class="box">
+
+  <% newListItem.forEach(list => {  %>
+  <form action="/delete" method="POST">
+    <div class="item">
+      <input type="checkbox" name="delete" value="<%= list._id %>" onchange="this.form.submit()" />
+      <p> <%= list.name %></p>
+    </div>
+    <input type="hidden" name="listName" value="<%= title %>">
+  </form>
+  <% }) %>
+
+
+  <form action="/" class="item" method="POST">
+    <input type="text" name="newItem" placeholder="New Item" autocomplete="off" /><br />
+    <br />
+    <button name="add" value="<%= title %>">+</button>
+  </form>
+</div>
+
+<%- include("footer"); %>
+
+
+<!-- <%- include("header"); %>
+
+<div class="box" id="heading">
+  <h1><%= // title %></h1>
+</div>
+<div class="box">
+  <% //  newListItem.forEach((item, index) => { %>
+  <div class="item">
+    <input type="checkbox" />
+    <p><%= // index+1 %>. <%=  // item %></p>
+  </div>
+  <% //  }) %> <% //  if(Path === "/"){ %>
+
+  <form action="/" class="item" method="POST">
+    <input
+      type="text"
+      name="newItem"
+      placeholder="New Item"
+      autocomplete="off"
+    /><br />
+    <br />
+    <button name="add">+</button>
+  </form>
+  <% // } else { %>
+  <form action="/work" class="item" method="POST">
+    <input
+      type="text"
+      name="newItem"
+      placeholder="New Item"
+      autocomplete="off"
+    />
+    <button name="add">+</button>
+  </form>
+  <% // } %>
+</div>
+
+<%- include("footer"); %> -->
