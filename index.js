@@ -1,5 +1,5 @@
 
-// Instructed by Angela (It's the best)
+// Instructed by Angela Yu (It's the best)
 
 // jshint esversion:6
 const express = require("express");
@@ -10,15 +10,14 @@ const _ = require("lodash");
 
 const app = express();
 
-// let List = ["Boil Egg", "Cook Food"];
-// let WorkList = [];
 
 // Connection with mongodb database "todolistDB"
 mongoose.connect("mongodb+srv://shubham_dutta:dutta1234@cluster0.gxwml.mongodb.net/todolistDB", { useNewUrlParser: true, useUnifiedTopology: true });
+//Use env for the above file it is a secret code
 
 // Creating the schema of "lists" collection
 const ListSchema = new mongoose.Schema({
-  name: String
+  name: String,
 })
 
 // Creating another schema of "customList" collection
@@ -65,17 +64,18 @@ app.get("/", (req, res) => {
       List.countDocuments(function (err, total) {
         console.log(total);
         if (total == 0) {
-          // Insert in database
-          List.insertMany(DefaultItems, function (err, docs) {
-            console.log("Successfully inserted 2 documents");
-            res.redirect("/");
-          })
-        } else {
+            // Insert in database
+            List.insertMany(DefaultItems, function (err, docs) {
+                console.log("Successfully inserted 2 documents");
+                res.redirect("/");
+            })
+        } 
+        else {
           res.render("list", { title: dateString, newListItem: lists });
-        }
-      })
-    }
-  })
+            }
+          })
+       }
+   })
 
 });
 
@@ -194,55 +194,4 @@ app.listen(PORT, () => {
 
 
 
-
-// // jshint esversion:6
-// const express = require("express");
-// const bodyParser = require("body-parser");
-// const date = require(__dirname + "/date");
-
-// const app = express();
-
-// const List = ["Boil Egg", "Cook Food"];
-// const WorkList = ["Do Coding", "Web Dev"];
-
-// app.use(bodyParser.urlencoded({ extended: true }));
-
-// app.use(express.static("views/css"));
-
-// app.set("view engine", "ejs");
-
-// app.get("/", (req, res) => {
-//   const dateString = date.getDay();
-//   res.render("list", { title: dateString, newListItem: List, Path: req.path });
-// });
-
-// app.get("/wo?rk", (req, res) => {
-//   res.render("list", { title: "Work", newListItem: WorkList, Path: req.path });
-// });
-
-// app.get("/about", (req, res) => {
-//   res.render("about");
-// });
-
-// app.post("/", (req, res) => {
-//   const item = req.body.newItem;
-
-//   List.push(item);
-//   console.log(List);
-//   res.redirect("/");
-// });
-
-// app.post("/wo?rk", (req, res) => {
-//   const item = req.body.newItem;
-
-//   WorkList.push(item);
-//   console.log(WorkList);
-//   res.redirect("/work");
-// });
-
-// const PORT = process.env.PORT || 3000;
-
-// app.listen(PORT, () => {
-//   console.log(`Server started at port ${PORT}`);
-// });
 
