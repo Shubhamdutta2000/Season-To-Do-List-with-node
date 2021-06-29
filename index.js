@@ -14,7 +14,7 @@ const app = express();
 // let WorkList = [];
 
 // Connection with mongodb database "todolistDB"
-mongoose.connect("mongodb+srv://shubham_dutta:dutta1234@cluster0.gxwml.mongodb.net/todolistDB", { useNewUrlParser: true, useUnifiedTopology: true });
+mongoose.connect( "mongodb+srv://shubham:shubham@cluster0.1pz6p.mongodb.net/todos?retryWrites=true&w=majority", { useNewUrlParser: true, useUnifiedTopology: true });
 
 // Creating the schema of "lists" collection
 const ListSchema = new mongoose.Schema({
